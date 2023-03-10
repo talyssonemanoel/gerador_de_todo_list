@@ -1,0 +1,21 @@
+<h1><%= @list.name %></h1>
+
+<ul>
+  <% @items.each do |item| %>
+    <li>
+      <%= form_for([@list, item]) do |f| %>
+        <%= f.check_box :completed, :class => 'toggle', :onchange => 'this.form.submit()' %>
+        <%= f.label :completed, item.description %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Voltar para Lista', lists_path %></p>
+
+<%= form_for([@list, @list.items.build]) do |f| %>
+  <p>
+    <%= f.text_field :description, :placeholder => 'Descrição do item' %>
+    <%= f.submit 'Adicionar Item' %>
+  </p>
+<% end %>

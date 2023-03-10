@@ -1,0 +1,13 @@
+<h1>Nova Lista de TO DO</h1>
+
+<%= form_for @list do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Criar Lista' %>
+  </p>
+<% end %>
+
+<p><%= link_to 'Voltar para Lista', lists_path %></p>
