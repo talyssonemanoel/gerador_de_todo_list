@@ -1,6 +1,9 @@
-<li>
-  <%= form_for([list, item]) do |f| %>
-    <%= f.check_box :completed, :class => 'toggle', :onchange => 'this.form.submit()' %>
-    <%= f.label :completed, item.description %>
-  <% end %>
-</li>
+
+<table class="table">
+    <li>
+        <%= form_for([list, item]) do |f| %>
+            <%= f.check_box :completed, :class => 'toggle', :onchange => 'this.form.submit()' %>
+            <%= f.label :completed, item.description %>
+        <% end %>
+        </li>
+</table>

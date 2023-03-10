@@ -35,10 +35,21 @@ class ListsController < ApplicationController
     end
   
     def destroy
-      @list = List.find(params[:id])
-      @list.destroy
-      redirect_to lists_path
-    end
+        @list = List.find(params[:id])
+        @list.destroy
+      
+        respond_to do |format|
+          format.html { redirect_to lists_path, notice: 'List was successfully destroyed.' }
+          format.json { head :no_content }
+        end
+      end
+
+      def delete
+        @list = List.find(params[:id])
+        @list.delete
+        redirect_to lists_path, notice: "Objeto excluído com sucesso."
+      end
+    
   
     private
   

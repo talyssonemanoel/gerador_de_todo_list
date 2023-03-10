@@ -1,7 +1,28 @@
-<h1>Listas de TO DO</h1>
 
-<% @lists.each do |list| %>
-  <p><%= link_to list.name, list %></p>
-<% end %>
 
-<p><%= link_to 'Nova Lista', new_list_path %></p>
+
+<div class="container grid text-center">
+<table class="table table-secondary table-striped table-bordered">
+  <tr>
+    <th scope="col">Nome da lista</th>
+    <th scope="col">Ação</th>
+  </tr>
+  <% @lists.each do |list| %>
+    <div class="g-col-3 g-start-2">
+      <tr>
+        <td><%= link_to list.name, list %></td>
+        
+        <td>
+        <%= link_to 'Excluir', list_path(list), method: :destroy, data: { confirm: 'Tem certeza que deseja excluir esta lista?' } %>
+        <%= button_to "Excluir", list, method: :delete %>
+        </td>
+      </tr>
+    </div>
+  <% end %>
+
+</table>
+
+<button type="button" class="btn btn-warning"><%= link_to 'Nova Lista', new_list_path %></button>
+
+</div>
+

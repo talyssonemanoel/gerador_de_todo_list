@@ -6,12 +6,21 @@
       <%= form_for([@list, item]) do |f| %>
         <%= f.check_box :completed, :class => 'toggle', :onchange => 'this.form.submit()' %>
         <%= f.label :completed, item.description %>
+        <tr>
+      <td><%= item.completed ? "Feito" : "A fazer" %></td>
+
+    </tr>
       <% end %>
     </li>
   <% end %>
 </ul>
 
+
 <p><%= link_to 'Voltar para Lista', lists_path %></p>
+<%= button_to "Destroy this list", @list, method: :delete %>
+</div>
+
+
 
 <%= form_for([@list, @list.items.build]) do |f| %>
   <p>
