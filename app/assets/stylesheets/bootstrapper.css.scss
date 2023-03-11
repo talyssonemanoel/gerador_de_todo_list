@@ -1,1 +1,22 @@
 @import "bootstrap";
+
+.completed {
+    text-decoration: line-through;
+  }
+
+  .table-sm {
+    margin: 0 auto;
+  }
+
+  .meu-card {
+    background-color: #C0C0C0; /* define a cor personalizada */
+    color: #fff; /* define a cor do texto para branco */
+  }
+
+  .link-hover:hover {
+    font-size: 18px;
+  }
+  a {
+    color: #363636;
+    font-weight: bold;
+  }  

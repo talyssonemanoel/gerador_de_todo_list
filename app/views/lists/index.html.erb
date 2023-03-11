@@ -1,28 +1,26 @@
-
-
-
-<div class="container grid text-center">
-<table class="table table-secondary table-striped table-bordered">
-  <tr>
-    <th scope="col">Nome da lista</th>
-    <th scope="col">Ação</th>
-  </tr>
-  <% @lists.each do |list| %>
-    <div class="g-col-3 g-start-2">
+<div class="container meu-card" style="margin-top: 25px;">
+<table class="table table-secondary table-striped table-bordered rounded">
+    <thead>
       <tr>
-        <td><%= link_to list.name, list %></td>
-        
-        <td>
-        <%= link_to 'Excluir', list_path(list), method: :destroy, data: { confirm: 'Tem certeza que deseja excluir esta lista?' } %>
-        <%= button_to "Excluir", list, method: :delete %>
-        </td>
+        <th scope="col" class="text-center align-middle">LISTA</th>
+        <th scope="col" style="width: 120px;" class="text-center align-middle">OPÇÕES</th>
       </tr>
-    </div>
-  <% end %>
-
-</table>
-
-<button type="button" class="btn btn-warning"><%= link_to 'Nova Lista', new_list_path %></button>
-
+    </thead>
+    <tbody>
+      <% @lists.each do |list| %>
+        <tr>
+          <td class="align-middle text-center">
+            <%= link_to list.name, list, style: "text-decoration: none;", class: "link-hover" %>
+          </td>
+          <td class="align-middle" style="text-align: right;">
+            <div class="d-flex justify-content-end">
+              <%= button_to "Editar", list, method: :edit, class: "btn btn-warning" %>
+              <%= button_to "Excluir", list, method: :delete, class: "btn btn-danger ms-2" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= button_to 'Nova Lista', new_list_path, method: :get, class: 'btn btn-success' %>
 </div>
-

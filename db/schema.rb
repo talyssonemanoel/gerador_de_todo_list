@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_10_035617) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_10_182723) do
   create_table "items", force: :cascade do |t|
     t.string "description"
     t.boolean "completed"
@@ -26,5 +26,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_035617) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "items", "lists"
+  add_foreign_key "items", "lists", on_delete: :cascade
 end
