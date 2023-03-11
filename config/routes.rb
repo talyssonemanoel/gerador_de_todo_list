@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   resources :lists do
-    resources :items, only: [:create, :update, :delete]
+    resources :items, only: [:create, :update, :destroy]
   end
   root 'lists#index'
   delete 'lists/:id', to: 'lists#destroy', as: 'list_delete'
-  edit 'lists/:id', to: 'lists#edit', as: 'list_edit'
+  delete 'lists/:list_id/items/:id/delete', to: 'items#destroy', as: 'delete_list_item'
 end
+
 

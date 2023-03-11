@@ -1,34 +1,62 @@
-<h1 class="text-center"><%= @list.name %></h1>
-<div class="card mx-auto">
-  <div class="card-body">
-    <div class="container grid text-center">
-		<table class="table table-secondary table-striped table-bordered table-sm">
-  <tr>
-    <th scope="col">Tarefa</th>
-  </tr>
-  <% @items.each do |item| %>
-    <div class="g-col-3 g-start-2">
+<h1 class="text-center" style="color: #212529;"><%= @list.name %></h1>
+<div class="container grid text-center">
+  <table class="table table-bordered table-sm">
+    <tr class="table-secondary">
+      <th scope="col">TAREFA</th>
+    </tr>
+    <% @items.each do |item| %>
       <%= form_for([@list, item]) do |f| %>
-        <tr>
-          <td>
-            <%= f.check_box :completed, :class => 'toggle', :onchange => 'this.form.submit()' %>
-            <%= label_tag "item_#{item.id}", item.description, :class => item.completed ? 'completed' : '' %>
+        <tr class="<%= item.completed ? 'table-success' : '' %> item-row table-secondary">
+          <td class="d-flex align-items-center justify-content-between">
+            <div class="mx-auto text-center">
+              <%= f.check_box :completed, class: 'toggle', onchange: 'this.form.submit()', id: "item_#{item.id}", style: "display: none;" %>
+              <%= label_tag "item_#{item.id}", item.description, class: "#{item.completed ? 'completed' : ''}", for: "item_#{item.id}" %>
+            </div>
+
           </td>
         </tr>
       <% end %>
-    </div>
-  <% end %>      
-</table>
+    <% end %>
+    
 
-	</div>
+    <script>
+      $(".item-row").each(function() {
+        var checkbox = $(this).find(".toggle");
+        var row = $(this);
+        
+        // Define a cor de fundo inicial da linha
+        if (checkbox.prop('checked')) {
+          row.addClass('table-success');
+        }
+        
+        // Atualiza a cor de fundo da linha quando a checkbox é alterada
+        checkbox.change(function() {
+          if ($(this).prop('checked')) {
+            row.addClass('table-success');
+          } else {
+            row.removeClass('table-success');
+          }
+          $(this).closest('form').submit();
+        });
+        
+        // Atualiza a classe da linha quando o formulário é carregado
+        $(document).ready(function() {
+          if (checkbox.prop('checked')) {
+            row.addClass('table-success');
+          }
+        });
+      });
+    </script>
+    
+  </table>
+
+  <div style="margin-top: 25px;">
+    <%= form_for([@list, @list.items.build]) do |f| %>
+      <p>
+        <%= f.text_field :description, :placeholder => 'Descrição do item' %>
+        <%= f.submit 'Adicionar Item', class: 'btn btn-success' %>
+      </p>
+    <% end %>
+    <%= link_to 'Voltar', lists_path, class: 'btn btn-primary float-left' %>
   </div>
-</div>
-<div class="text-center">
-	<%= form_for([@list, @list.items.build]) do |f| %>
-		<p>
-			<%= f.text_field :description, :placeholder => 'Descrição do item' %>
-			<%= f.submit 'Adicionar Item', class: 'btn btn-success' %>
-		</p>
-	<% end %>
-	<%= link_to 'Voltar', lists_path, class: 'btn btn-primary' %>
 </div>

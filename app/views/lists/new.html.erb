@@ -1,11 +1,13 @@
-<h1 class="text-center">Nova Lista de TO DO</h1>
+<h1 class="text-center txt-cor">Nova Lista de TO DO</h1>
 <div class="d-flex justify-content-center">
   <%= form_for @list do |f| %>
     <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <div class="txt-cor">Nome da lista</div>
+      <%= f.text_field :name, class: 'form-control'  %>
     </div>
-    <%= f.submit 'Criar Lista', class: 'btn btn-success mr-2' %>
-    <%= link_to 'Cancelar', lists_path, class: 'btn btn-danger' %>
+    <div class="container" style="margin-top: 8px;">
+      <%= f.submit 'Criar Lista', class: 'btn btn-success mr-2' %>
+      <%= link_to 'Cancelar', lists_path, class: 'btn btn-danger' %>
+    </div>
   <% end %>
 </div> 
