@@ -1,4 +1,4 @@
-#Gerador de To-do List
+Gerador de To-do List
 Este é um projeto em Ruby on Rails desenvolvido para o processo seletivo da V360. O objetivo deste projeto é criar um gerador de to-do list onde os usuários possam criar, visualizar, editar suas tarefas.
 
 Funcionalidades
@@ -7,7 +7,7 @@ Visualizar todas as tarefas criadas
 Editar uma tarefa existente
 Excluir uma tarefa existente
 
-##Instalação
+Instalação
 Faça o clone do repositório:
 bash
 git clone https://github.com/seu-usuario/gerador_de_to_do_list.git
